@@ -1,0 +1,69 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Really Simple Event Calendar\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-15 15:14+0100\n"
+"PO-Revision-Date: 2012-03-15 15:14+0100\n"
+"Last-Translator: OCC <oscarciutat@gmail.com>\n"
+"Language-Team:  <contact@oscarciutat.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: really-simple-event-calendar.php:95
+msgid "today"
+msgstr "hoy"
+
+#: really-simple-event-calendar.php:96
+msgid "day"
+msgstr "día"
+
+#: really-simple-event-calendar.php:97
+msgid "week"
+msgstr "semana"
+
+#: really-simple-event-calendar.php:98
+msgid "month"
+msgstr "mes"
+
+#: really-simple-event-calendar.php:141
+msgid "Event Data"
+msgstr "Datos del evento"
+
+#: really-simple-event-calendar.php:175
+msgid "Start Date/Time"
+msgstr "Fecha de inicio"
+
+#: really-simple-event-calendar.php:184
+msgid "End Date/Time"
+msgstr "Fecha de finalización"
+
+#: really-simple-event-calendar.php:282
+msgid "Loading&#8230;"
+msgstr "Cargando&#8230;"
+
+#: really-simple-event-calendar.php:287
+msgid "Export to Google Calendar"
+msgstr "Exportar a Google Calendar"
+
+#: really-simple-event-calendar.php:287
+msgid "Download iCal file"
+msgstr "Descargar fichero iCalendar"
+
+#: really-simple-event-calendar.php:427
+#, php-format
+msgid "%s Calendar"
+msgstr "Agenda de %s"
+
+#~ msgid "Event?"
+#~ msgstr "¿Evento?"
+
+#~ msgid "Venue"
+#~ msgstr "Lugar"
+
+#~ msgid "Cost"
+#~ msgstr "Precio"
