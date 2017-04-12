@@ -110,7 +110,8 @@ class ReallySimpleEventCalendar {
 	 *
 	 */
     function admin_scripts(){  
-        wp_enqueue_style( 'datepicker-css', $this->plugin_url . 'css/jquery-ui.min.css' );
+        wp_enqueue_style( 'jqueryui-css', $this->plugin_url . 'css/jquery-ui.min.css' );
+		wp_enqueue_style( 'datepicker-css', $this->plugin_url . 'css/datepicker.css', array( 'jqueryui-css' ) );
         wp_enqueue_script( 'jquery-ui-datepicker' );
     }  
      
