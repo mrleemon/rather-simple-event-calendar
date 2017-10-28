@@ -57,7 +57,6 @@ class ReallySimpleEventCalendar {
         add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );  
         add_action( 'wp_enqueue_scripts', array( $this, 'wp_scripts' ) );  
           
-        add_action( 'admin_head', array( $this, 'call_js' ) );  
         add_action( 'add_meta_boxes', array( $this, 'meta_box' ) );  
         add_action( 'save_post', array( $this, 'save_data' ) );  
 
@@ -109,10 +108,16 @@ class ReallySimpleEventCalendar {
 	 * @since 1.0
 	 *
 	 */
-    function admin_scripts(){  
-        wp_enqueue_style( 'jqueryui-css', $this->plugin_url . 'css/jquery-ui.min.css' );
-		wp_enqueue_style( 'datepicker-css', $this->plugin_url . 'css/datepicker.css', array( 'jqueryui-css' ) );
-        wp_enqueue_script( 'jquery-ui-datepicker' );
+    function admin_scripts( $hook ){
+    	if ( in_array( $hook, array( 'post.php', 'post-new.php' ) ) ) {
+    		$screen = get_current_screen();
+	        if ( is_object( $screen ) && 'post' == $screen->post_type ) {
+        		wp_enqueue_style( 'jqueryui-css', $this->plugin_url . 'css/jquery-ui.min.css' );
+				wp_enqueue_style( 'datepicker-css', $this->plugin_url . 'css/datepicker.css', array( 'jqueryui-css' ) );
+        		wp_enqueue_script( 'jquery-ui-datepicker' );
+        		wp_enqueue_script( 'events-backend', $this->plugin_url . 'js/backend.js', array ( 'jquery-ui-datepicker' ), null, true );
+        	}
+        }
     }  
      
 
@@ -124,12 +129,12 @@ class ReallySimpleEventCalendar {
     function wp_scripts(){  
         global $wp_locale;
 
-		wp_enqueue_style( 'calendar-css', $this->plugin_url . 'css/fullcalendar.css' );  
+		wp_enqueue_style( 'calendar-css', $this->plugin_url . 'css/fullcalendar.min.css' );  
 		wp_enqueue_style( 'events-css', $this->plugin_url . 'css/styles.css' );  
 
-        wp_enqueue_script( 'moment-js', $this->plugin_url . 'js/moment.min.js', array( 'jquery' ) );  
-        wp_enqueue_script( 'calendar-js', $this->plugin_url . 'js/fullcalendar.min.js', array( 'moment-js' ) );
-        wp_enqueue_script( 'frontend-js', $this->plugin_url . 'js/frontend.js', array ( 'calendar-js' ) );
+        wp_enqueue_script( 'moment-js', $this->plugin_url . 'js/moment.min.js', array( 'jquery' ), null, true );  
+        wp_enqueue_script( 'calendar-js', $this->plugin_url . 'js/fullcalendar.min.js', array( 'moment-js' ), null, true );
+        wp_enqueue_script( 'events-frontend', $this->plugin_url . 'js/frontend.js', array ( 'calendar-js' ), null, true );
          
         wp_localize_script( 
 			'frontend-js', 
@@ -151,26 +156,6 @@ class ReallySimpleEventCalendar {
 		
     }  
      
-
-    /* Function: call_js
-	 *
-	 * @since 1.0
-	 *
-	 */
-    function call_js() {  
-		global $post;
-		if ( $post ) {
-			if ( $post->post_type == 'post' ) {
-				echo    '<script> 
-						jQuery(document).ready(function($) { 
-							$( "#event-startdate-field" ).datepicker({ firstDay: 1, dateFormat: "dd-mm-yy" }); 
-							$( "#event-enddate-field" ).datepicker({ firstDay: 1, dateFormat: "dd-mm-yy" }); 
-						}); 
-						</script>';  
-			}  
-		}   
-	}
-
 
     /* Function: meta_box
 	 *
