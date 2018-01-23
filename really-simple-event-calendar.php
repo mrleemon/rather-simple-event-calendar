@@ -137,7 +137,7 @@ class ReallySimpleEventCalendar {
         wp_enqueue_script( 'events-frontend', $this->plugin_url . 'js/frontend.js', array ( 'calendar-js' ), null, true );
          
         wp_localize_script( 
-			'frontend-js', 
+			'events-frontend', 
 			'RSECAjax', 
 			array( 
 				'ajaxurl' => admin_url( 'admin-ajax.php' ),
@@ -185,7 +185,7 @@ class ReallySimpleEventCalendar {
 		wp_nonce_field( plugin_basename( __FILE__ ), 'rsec-events_nounce' );  
   
 		// The actual fields for data entry  
-        echo '<table>
+        echo '<table class="form-table">
 				<tr>';
 
 		$event_startdate_field = get_post_meta( $post->ID, 'event-startdate', true );
@@ -198,17 +198,13 @@ class ReallySimpleEventCalendar {
 			$event_enddate_field = date( 'd-m-Y', strtotime( $event_enddate_field ) );
 		}
 			        
-		echo '<td><label for="event-startdate-field">';  
-		_e( 'Start Date/Time', 'rsec' );  
-		echo '</label></td>';  
-		echo '<td><input type="text" id="event-startdate-field" name="event-startdate-field" value="' . $event_startdate_field . '" size="10" maxlength="10" /></td>';
+		echo '<th scope="row"><label for="event-startdate-field">' . __( 'Start Date/Time', 'rsec' ) . '</label></th>';
+		echo '<td><input class="regular-text" type="text" id="event-startdate-field" name="event-startdate-field" value="' . $event_startdate_field . '" maxlength="10" /></td>';
         
         echo '</tr><tr>';
 
-        echo '<td><label for="event-enddate-field">';  
-		_e( 'End Date/Time', 'rsec' );  
-		echo '</label></td>';  
-		echo '<td><input type="text" id="event-enddate-field" name="event-enddate-field" value="' . $event_enddate_field . '" size="10" maxlength="10" /></td>';
+        echo '<th scope="row"><label for="event-enddate-field">' . __( 'End Date/Time', 'rsec' ) . '</label></th>';
+		echo '<td><input class="regular-text" type="text" id="event-enddate-field" name="event-enddate-field" value="' . $event_enddate_field . '" maxlength="10" /></td>';
         
 		echo '</tr>
 			</table>';
@@ -269,8 +265,8 @@ class ReallySimpleEventCalendar {
 	 * @since 1.0
 	 *
 	 */
-	function shortcode( $atts ) {
-		$html = $this->show_calendar( $atts );
+	function shortcode( $attr ) {
+		$html = $this->show_calendar( $attr );
 		return $html;
 	}
   
@@ -280,12 +276,11 @@ class ReallySimpleEventCalendar {
 	 * @since 1.0
 	 *
 	 */
-    function show_calendar( $atts ) {
+    function show_calendar( $attr ) {
     
-		$defaults = array(
-			'firstDay' => intval( get_option( 'start_of_week' ) ),
-		);
-		$atts = shortcode_atts( $defaults, $atts );
+		$atts = shortcode_atts( array(
+            'firstDay' => intval( get_option( 'start_of_week' ) )
+        ), $attr, 'fullcalendar' );
 
 		$includes = includes_url();
 		
