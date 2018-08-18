@@ -150,17 +150,17 @@
     
       $now = new DateTime();
       $dtstamp =$now->format('Ymd\THis\Z');
-			
+            
       //Generate a globally unique UID 
-	    $rand = '';
-	    $host = $_SERVER['SERVER_NAME'];
-	    $base = 'aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPrRsStTuUvVxXuUvVwWzZ1234567890';
+        $rand = '';
+        $host = $_SERVER['SERVER_NAME'];
+        $base = 'aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPrRsStTuUvVxXuUvVwWzZ1234567890';
       $start = 0;
       $end = strlen( $base ) - 1;
       $length = 6;
 
       for( $p = 0; $p < $length; $p++ ):
-       		$rand .= $base{mt_rand( $start, $end )};
+               $rand .= $base{mt_rand( $start, $end )};
       endfor;
 
       $uid  = $now->format('Ymd\THiT').'-'.$rand.'-EO'.$id.'@'.$host;
