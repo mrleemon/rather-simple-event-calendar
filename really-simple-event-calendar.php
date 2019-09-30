@@ -130,7 +130,7 @@ class ReallySimpleEventCalendar {
         global $wp_locale;
 
         wp_enqueue_style( 'calendar-css', $this->plugin_url . 'assets/css/fullcalendar.min.css' );  
-        wp_enqueue_style( 'events-css', $this->plugin_url . 'styles.css' );  
+        wp_enqueue_style( 'events-css', $this->plugin_url . 'style.css' );  
 
         wp_enqueue_script( 'moment-js', $this->plugin_url . 'assets/js/moment.min.js', array( 'jquery' ), null, true );  
         wp_enqueue_script( 'calendar-js', $this->plugin_url . 'assets/js/fullcalendar.min.js', array( 'moment-js' ), null, true );
