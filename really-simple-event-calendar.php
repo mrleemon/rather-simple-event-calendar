@@ -112,10 +112,10 @@ class ReallySimpleEventCalendar {
         if ( in_array( $hook, array( 'post.php', 'post-new.php' ) ) ) {
             $screen = get_current_screen();
             if ( is_object( $screen ) && 'post' == $screen->post_type ) {
-                wp_enqueue_style( 'jqueryui-css', $this->plugin_url . 'css/jquery-ui.min.css' );
-                wp_enqueue_style( 'datepicker-css', $this->plugin_url . 'css/datepicker.css', array( 'jqueryui-css' ) );
+                wp_enqueue_style( 'jqueryui-css', $this->plugin_url . 'assets/css/jquery-ui.min.css' );
+                wp_enqueue_style( 'datepicker-css', $this->plugin_url . 'assets/css/datepicker.css', array( 'jqueryui-css' ) );
                 wp_enqueue_script( 'jquery-ui-datepicker' );
-                wp_enqueue_script( 'events-backend', $this->plugin_url . 'js/backend.js', array ( 'jquery-ui-datepicker' ), null, true );
+                wp_enqueue_script( 'events-backend', $this->plugin_url . 'assets/js/backend.js', array ( 'jquery-ui-datepicker' ), null, true );
             }
         }
     }  
@@ -129,12 +129,12 @@ class ReallySimpleEventCalendar {
     function wp_scripts(){  
         global $wp_locale;
 
-        wp_enqueue_style( 'calendar-css', $this->plugin_url . 'css/fullcalendar.min.css' );  
-        wp_enqueue_style( 'events-css', $this->plugin_url . 'css/styles.css' );  
+        wp_enqueue_style( 'calendar-css', $this->plugin_url . 'assets/css/fullcalendar.min.css' );  
+        wp_enqueue_style( 'events-css', $this->plugin_url . 'assets/css/styles.css' );  
 
-        wp_enqueue_script( 'moment-js', $this->plugin_url . 'js/moment.min.js', array( 'jquery' ), null, true );  
-        wp_enqueue_script( 'calendar-js', $this->plugin_url . 'js/fullcalendar.min.js', array( 'moment-js' ), null, true );
-        wp_enqueue_script( 'events-frontend', $this->plugin_url . 'js/frontend.js', array ( 'calendar-js' ), null, true );
+        wp_enqueue_script( 'moment-js', $this->plugin_url . 'assets/js/moment.min.js', array( 'jquery' ), null, true );  
+        wp_enqueue_script( 'calendar-js', $this->plugin_url . 'assets/js/fullcalendar.min.js', array( 'moment-js' ), null, true );
+        wp_enqueue_script( 'events-frontend', $this->plugin_url . 'assets/js/frontend.js', array ( 'calendar-js' ), null, true );
          
         wp_localize_script( 
             'events-frontend', 
