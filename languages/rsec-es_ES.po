@@ -1,63 +1,81 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Really Simple Event Calendar\n"
+"Project-Id-Version: Rather Simple Event Calendar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-15 15:14+0100\n"
-"PO-Revision-Date: 2012-03-15 15:14+0100\n"
+"POT-Creation-Date: 2020-01-04 11:40+0100\n"
+"PO-Revision-Date: 2020-01-04 11:40+0100\n"
 "Last-Translator: OCC <oscarciutat@gmail.com>\n"
-"Language-Team:  <contact@oscarciutat.com>\n"
+"Language-Team: <contact@oscarciutat.com>\n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-KeywordsList: __;_e\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-Language: Spanish\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: rather-simple-event-calendar.php\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: really-simple-event-calendar.php:95
+#: rather-simple-event-calendar.php:149
 msgid "today"
 msgstr "hoy"
 
-#: really-simple-event-calendar.php:96
+#: rather-simple-event-calendar.php:150
 msgid "day"
 msgstr "día"
 
-#: really-simple-event-calendar.php:97
+#: rather-simple-event-calendar.php:151
 msgid "week"
 msgstr "semana"
 
-#: really-simple-event-calendar.php:98
+#: rather-simple-event-calendar.php:152
 msgid "month"
 msgstr "mes"
 
-#: really-simple-event-calendar.php:141
+#: rather-simple-event-calendar.php:168
 msgid "Event Data"
 msgstr "Datos del evento"
 
-#: really-simple-event-calendar.php:175
+#: rather-simple-event-calendar.php:201
 msgid "Start Date/Time"
 msgstr "Fecha de inicio"
 
-#: really-simple-event-calendar.php:184
+#: rather-simple-event-calendar.php:206
 msgid "End Date/Time"
 msgstr "Fecha de finalización"
 
-#: really-simple-event-calendar.php:282
+#: rather-simple-event-calendar.php:289
 msgid "Loading&#8230;"
 msgstr "Cargando&#8230;"
 
-#: really-simple-event-calendar.php:287
+#: rather-simple-event-calendar.php:294
 msgid "Export to Google Calendar"
 msgstr "Exportar a Google Calendar"
 
-#: really-simple-event-calendar.php:287
+#: rather-simple-event-calendar.php:294
 msgid "Download iCal file"
 msgstr "Descargar fichero iCalendar"
 
-#: really-simple-event-calendar.php:427
+#: rather-simple-event-calendar.php:434
 #, php-format
 msgid "%s Calendar"
 msgstr "Agenda de %s"
+
+#. Plugin Name of the plugin/theme
+msgid "Rather Simple Event Calendar"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "A really simple event calendar"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Oscar Ciutat"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://oscarciutat.com/code"
+msgstr ""
 
 #~ msgid "Event?"
 #~ msgstr "¿Evento?"

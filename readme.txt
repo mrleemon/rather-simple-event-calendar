@@ -1,4 +1,4 @@
-=== Really Simple Event Calendar ===
+=== Rather Simple Event Calendar ===
 
 Contributors: Oscar Ciutat
 Tags: calendar, events
@@ -13,20 +13,15 @@ A really simple event calendar
 
 This plugin creates a really simple event calendar. 
 
-Really Simple Event Calendar has been translated into a number of languages.
-
-* Catalan (ca)
-* Spanish (es_ES)
-
 == Installation ==
 
-1. Upload the entire `really-simple-event-calendar` folder to the `/wp-content/plugins/` directory.
+1. Upload the entire `rather-simple-event-calendar` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress Admin.
 
 
 == Usage ==
 
-Add Really Simple Event Calendar to a page
+Add Rather Simple Event Calendar to a page
 
 1. Go to the 'Pages' menu in Wordpress Admin and choose 'Add New' in the submenu.
 2. Name the page anything you want.

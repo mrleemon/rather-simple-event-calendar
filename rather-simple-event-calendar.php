@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Really Simple Event Calendar
+Plugin Name: Rather Simple Event Calendar
 Plugin URI: 
 Description: A really simple event calendar
 Version: 1.0
@@ -10,7 +10,7 @@ Author URI: http://oscarciutat.com/code
 
 define( 'RSEC_VERSION', '1.0' );
 
-class ReallySimpleEventCalendar {  
+class RatherSimpleEventCalendar {  
 
     var $plugin_url;  
   
@@ -484,6 +484,4 @@ class ReallySimpleEventCalendar {
 
 }
 
-add_action( 'plugins_loaded', array ( ReallySimpleEventCalendar::get_instance(), 'plugin_setup' ) );
-
-?>
+add_action( 'plugins_loaded', array ( RatherSimpleEventCalendar::get_instance(), 'plugin_setup' ) );
