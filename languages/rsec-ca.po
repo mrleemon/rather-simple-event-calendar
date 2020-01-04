@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Rather Simple Event Calendar\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-04 11:39+0100\n"
-"PO-Revision-Date: 2020-01-04 11:40+0100\n"
+"PO-Revision-Date: 2020-01-04 11:46+0100\n"
 "Last-Translator: OCC <oscarciutat@gmail.com>\n"
 "Language-Team: <contact@oscarciutat.com>\n"
 "Language: ca\n"
@@ -76,12 +76,3 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "http://oscarciutat.com/code"
 msgstr ""
-
-#~ msgid "Event?"
-#~ msgstr "¿Esdeveniment?"
-
-#~ msgid "Venue"
-#~ msgstr "Lloc"
-
-#~ msgid "Cost"
-#~ msgstr "Preu"
