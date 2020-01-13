@@ -55,7 +55,8 @@
     white-space: normal;
 }
 
-.fc-ltr .fc-h-event.fc-not-start, .fc-rtl .fc-h-event.fc-not-end {
+.fc-ltr .fc-h-event.fc-not-start,
+.fc-rtl .fc-h-event.fc-not-end {
     padding-left: 10px;
 }
 
