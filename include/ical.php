@@ -160,7 +160,7 @@
       $length = 6;
 
       for( $p = 0; $p < $length; $p++ ):
-               $rand .= $base{mt_rand( $start, $end )};
+               $rand .= $base[mt_rand( $start, $end )];
       endfor;
 
       $uid  = $now->format('Ymd\THiT').'-'.$rand.'-EO'.$id.'@'.$host;
