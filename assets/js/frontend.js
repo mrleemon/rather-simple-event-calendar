@@ -1,6 +1,6 @@
-(function($){
+( function( $ ) {
 
-    $(document).ready(function() {
+    $( function() {
 
         $('#fullcalendar').fullCalendar({
             height: 'auto',
@@ -62,6 +62,6 @@
             }
         });
         
-    });
+    } );
 
-})(jQuery);
+} )( jQuery );
