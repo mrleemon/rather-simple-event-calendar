@@ -57,6 +57,10 @@
     padding-left: 10px;
 }
 
+.fc .fc-col-header-cell a {
+    color: #111;
+}
+
 .fc .fc-daygrid-day.fc-day-today {
     background-color: #fdd;
 }

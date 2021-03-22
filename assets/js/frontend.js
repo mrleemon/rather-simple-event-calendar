@@ -8,21 +8,18 @@ document.addEventListener( 'DOMContentLoaded', function() {
         editable: false,
         selectable: false,
         headerToolbar: {
-            left: 'basicWeek,basicDay',
+            left: 'dayGridWeek,dayGridDay',
             center: 'title',
             right: 'today prev,next'
         },
         views: {
             dayGrid: {
-                //'dddd D MMMM, YYYY'
                 titleFormat: { year: 'numeric', month: 'long', day: 'numeric' },
-                dayHeaderFormat: { weekday: 'long' }
+                dayHeaderFormat: { weekday: 'short', day: 'numeric' }
             },
             week: {
-                //week: 'ddd D',
-                //day: 'dddd D'
                 titleFormat: { year: 'numeric', month: 'long', day: 'numeric' },
-                dayHeaderFormat: { weekday: 'long' }
+                dayHeaderFormat: { weekday: 'long', day: 'numeric' }
             }
         },
         initialView: 'dayGridWeek',
