@@ -342,33 +342,37 @@ class RatherSimpleEventCalendar {
      */
     function get_events( $args = array() ) {
 
-        //In case an empty string is passed
+        // In case an empty string is passed
         if ( empty( $args ) ) {
             $args = array();
         }
 
-        //These are preset to ensure the plugin functions properly
-        $required = array( 'post_type' => 'post', 'post_status' => 'publish', 'suppress_filters' => 0 );
+        // These are preset to ensure the plugin functions properly
+        $required = array(
+            'post_type'   => 'post',
+            'post_status' => 'publish',
+            'suppress_filters' => 0
+        );
 
         $now = date( 'Y-m-d' );
        
-        //These are the defaults
+        // These are the defaults
         $defaults = array(
             'numberposts' => -1,
             'meta_key'    => 'event-startdate',
+            'orderby'     => 'meta_value',
+            'order'       => 'asc',
             'meta_query'  => array(
-                            array(
-                                'key'     => 'event-enddate',
-                                'value'   => $now,
-                                'type'    => 'date',
-                                'compare' => '>='
+                array(
+                    'key'     => 'event-enddate',
+                    'value'   => $now,
+                    'type'    => 'date',
+                    'compare' => '>='
                 )
             ),
-            'orderby'     => 'meta_value',
-            'order'       => 'asc'
         );
     
-        //Construct the query array    
+        // Construct the query array    
         $query_array = array_merge( $defaults, $args, $required );
 
         if ( $query_array ) {
