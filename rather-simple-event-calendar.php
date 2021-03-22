@@ -179,7 +179,7 @@ class RatherSimpleEventCalendar {
     function meta_box_content() {  
         global $post;  
         // Use nonce for verification  
-        wp_nonce_field( plugin_basename( __FILE__ ), 'rsec_events_nounce' );  
+        wp_nonce_field( plugin_basename( __FILE__ ), 'rsec_events_nonce' );  
   
         // The actual fields for data entry  
         echo '<table class="form-table">
@@ -215,7 +215,7 @@ class RatherSimpleEventCalendar {
      */
     function save_data( $post_id ) {  
         // Verify nonce
-        if ( !isset( $_POST['rsec_events_nounce'] ) || !wp_verify_nonce( $_POST['rsec_events_nounce'], plugin_basename( __FILE__ ) ) ) {
+        if ( !isset( $_POST['rsec_events_nonce'] ) || !wp_verify_nonce( $_POST['rsec_events_nonce'], plugin_basename( __FILE__ ) ) ) {
             return $post_id;
         }
 
