@@ -89,7 +89,7 @@ class RatherSimpleEventCalendar {
      *
      */
     function load_language() {
-        load_plugin_textdomain( 'rsec', '', plugin_basename( dirname( __FILE__ ) . '/languages/' ) );
+        load_plugin_textdomain( 'rather-simple-event-calendar', '', plugin_basename( dirname( __FILE__ ) . '/languages/' ) );
     }
 
     /* Function: admin_scripts
@@ -149,7 +149,7 @@ class RatherSimpleEventCalendar {
     function meta_box() {  
         add_meta_box(  
              'rsec-events',
-             __( 'Event Data', 'rsec' ),  
+             __( 'Event Data', 'rather-simple-event-calendar' ),  
              array( $this, 'meta_box_content' ),  
              'post',  
              'normal',  
@@ -181,12 +181,12 @@ class RatherSimpleEventCalendar {
             $event_enddate_field = date( 'd-m-Y', strtotime( $event_enddate_field ) );
         }
                     
-        echo '<th scope="row"><label for="event-startdate-field">' . __( 'Start Date/Time', 'rsec' ) . '</label></th>';
+        echo '<th scope="row"><label for="event-startdate-field">' . __( 'Start Date/Time', 'rather-simple-event-calendar' ) . '</label></th>';
         echo '<td><input class="regular-text" type="text" id="event-startdate-field" name="event-startdate-field" value="' . $event_startdate_field . '" maxlength="10" /></td>';
         
         echo '</tr><tr>';
 
-        echo '<th scope="row"><label for="event-enddate-field">' . __( 'End Date/Time', 'rsec' ) . '</label></th>';
+        echo '<th scope="row"><label for="event-enddate-field">' . __( 'End Date/Time', 'rather-simple-event-calendar' ) . '</label></th>';
         echo '<td><input class="regular-text" type="text" id="event-enddate-field" name="event-enddate-field" value="' . $event_enddate_field . '" maxlength="10" /></td>';
         
         echo '</tr>
@@ -265,12 +265,12 @@ class RatherSimpleEventCalendar {
         
         $html = '<div id="fullcalendar"></div>';
         $html .= '<div id="fullcalendar_loading" style="display:none; text-align: center;" >';
-        $html .= '<img src="' . $includes . 'images/spinner.gif' . '" style="vertical-align:middle; padding: 0px 5px 5px 0px;" />' . __( 'Loading&#8230;', 'rsec' ) . '</div>';
+        $html .= '<img src="' . $includes . 'images/spinner.gif' . '" style="vertical-align:middle; padding: 0px 5px 5px 0px;" />' . __( 'Loading&#8230;', 'rather-simple-event-calendar' ) . '</div>';
 
         $url = urlencode( trailingslashit( str_replace( 'https://', 'webcal://', get_bloginfo( 'wpurl' ) ) ) . '?rsec_export=yes' );
         $gcal = 'http://www.google.com/calendar/render?cid=' . $url;
         $ical = trailingslashit( get_bloginfo( 'wpurl' ) ) . '?rsec_export=yes';
-        $html .= '<div id="calendar-footer"><a target="_blank" href="' . $gcal . '">' . __( 'Export to Google Calendar', 'rsec' ) . '</a> | <a target="_blank" href="' . $ical . '">' . __( 'Download iCal file', 'rsec' ) . '</a></div>';
+        $html .= '<div id="calendar-footer"><a target="_blank" href="' . $gcal . '">' . __( 'Export to Google Calendar', 'rather-simple-event-calendar' ) . '</a> | <a target="_blank" href="' . $ical . '">' . __( 'Download iCal file', 'rather-simple-event-calendar' ) . '</a></div>';
         
         return $html;
     }
@@ -413,7 +413,7 @@ class RatherSimpleEventCalendar {
         global $post;
 
         $calendar_name = get_option( 'blogname' );
-        $calendar_description = sprintf(__( '%s Calendar', 'rsec' ), $calendar_name );
+        $calendar_description = sprintf(__( '%s Calendar', 'rather-simple-event-calendar' ), $calendar_name );
         $timezone = get_option( 'timezone_string' );
 
         $ics = ical_header( $calendar_name, $calendar_description, $timezone );
@@ -421,7 +421,7 @@ class RatherSimpleEventCalendar {
         $events = $this->get_events( $query );
         $eventsarray = array();
 
-        //Loop through events
+        // Loop through events
         if ( $events ) { 
             foreach ( $events as $post ) {
                 $created = new DateTime( $post->post_date_gmt );
