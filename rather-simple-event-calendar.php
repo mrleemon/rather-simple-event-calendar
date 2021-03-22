@@ -146,10 +146,6 @@ class RatherSimpleEventCalendar {
                 'ajaxurl' => admin_url( 'admin-ajax.php' ),
                 'locale' => array(
                     'lang'  => substr( get_locale(), 0, 2 ),
-                    'today' => __( 'today', 'rsec' ),
-                    'day'   => __( 'day', 'rsec' ),
-                    'week'  => __( 'week', 'rsec' ),
-                    'month' => __( 'month', 'rsec' )
                 )    
             )
         );

@@ -25,12 +25,6 @@ document.addEventListener( 'DOMContentLoaded', function() {
         initialView: 'dayGridWeek',
         fixedWeekCount: false,
         firstDay: 1,
-        buttonText: {
-            today: RSECAjax.locale.today,
-            month: RSECAjax.locale.month,
-            week: RSECAjax.locale.week,
-            day: RSECAjax.locale.day,
-        },
         lazyFetching: 'true',
         eventTextColor: '#fff',
         defaultAllDay: true,
