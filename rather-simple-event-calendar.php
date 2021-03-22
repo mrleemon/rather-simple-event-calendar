@@ -44,9 +44,7 @@ class RatherSimpleEventCalendar {
      */
     public function plugin_setup() {
 
-        $this->plugin_url = plugin_dir_url( __FILE__ );  
-
-          $this->includes();
+        $this->includes();
 
         add_action( 'init', array( $this, 'load_language' ) );
         
@@ -103,10 +101,10 @@ class RatherSimpleEventCalendar {
         if ( in_array( $hook, array( 'post.php', 'post-new.php' ) ) ) {
             $screen = get_current_screen();
             if ( is_object( $screen ) && 'post' == $screen->post_type ) {
-                wp_enqueue_style( 'jqueryui-css', $this->plugin_url . 'assets/css/jquery-ui.min.css' );
-                wp_enqueue_style( 'datepicker-css', $this->plugin_url . 'assets/css/datepicker.css', array( 'jqueryui-css' ) );
+                wp_enqueue_style( 'jqueryui-css', plugin_dir_url( __FILE__ ) . 'assets/css/jquery-ui.min.css' );
+                wp_enqueue_style( 'datepicker-css', plugin_dir_url( __FILE__ ) . 'assets/css/datepicker.css', array( 'jqueryui-css' ) );
                 wp_enqueue_script( 'jquery-ui-datepicker' );
-                wp_enqueue_script( 'events-backend', $this->plugin_url . 'assets/js/backend.js', array ( 'jquery-ui-datepicker' ), null, true );
+                wp_enqueue_script( 'events-backend', plugin_dir_url( __FILE__ ) . 'assets/js/backend.js', array ( 'jquery-ui-datepicker' ), null, true );
             }
         }
     }  
@@ -120,14 +118,14 @@ class RatherSimpleEventCalendar {
         global $wp_locale;
 
         // Load styles
-        wp_enqueue_style( 'fullcalendar-style', $this->plugin_url . 'assets/css/fullcalendar/main.min.css' );  
-        wp_enqueue_style( 'events-css', $this->plugin_url . 'style.css' );  
+        wp_enqueue_style( 'fullcalendar-style', plugin_dir_url( __FILE__ ) . 'assets/css/fullcalendar/main.min.css' );  
+        wp_enqueue_style( 'events-css', plugin_dir_url( __FILE__ ) . 'style.css' );  
         
         // Load scripts
-        wp_enqueue_script( 'fullcalendar-script', $this->plugin_url . 'assets/js/fullcalendar/main.min.js', array(), null, true );
-        wp_enqueue_script( 'fullcalendar-es', $this->plugin_url . 'assets/js/fullcalendar/es.js', array(), null, true );
-        wp_enqueue_script( 'fullcalendar-ca', $this->plugin_url . 'assets/js/fullcalendar/ca.js', array(), null, true );
-        wp_enqueue_script( 'rsec-frontend', $this->plugin_url . 'assets/js/frontend.js', array ( 'fullcalendar-script' ), null, true );
+        wp_enqueue_script( 'fullcalendar-script', plugin_dir_url( __FILE__ ) . 'assets/js/fullcalendar/main.min.js', array(), null, true );
+        wp_enqueue_script( 'fullcalendar-es', plugin_dir_url( __FILE__ ) . 'assets/js/fullcalendar/es.js', array(), null, true );
+        wp_enqueue_script( 'fullcalendar-ca', plugin_dir_url( __FILE__ ) . 'assets/js/fullcalendar/ca.js', array(), null, true );
+        wp_enqueue_script( 'rsec-frontend', plugin_dir_url( __FILE__ ) . 'assets/js/frontend.js', array ( 'fullcalendar-script' ), null, true );
          
         wp_localize_script( 
             'rsec-frontend', 
