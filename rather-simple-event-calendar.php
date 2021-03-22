@@ -129,30 +129,31 @@ class RatherSimpleEventCalendar {
     function wp_scripts(){  
         global $wp_locale;
 
-        wp_enqueue_style( 'calendar-css', $this->plugin_url . 'assets/css/fullcalendar.min.css' );  
+        // Load styles
+        wp_enqueue_style( 'fullcalendar-style', $this->plugin_url . 'assets/css/fullcalendar/main.min.css' );  
         wp_enqueue_style( 'events-css', $this->plugin_url . 'style.css' );  
-
-        wp_enqueue_script( 'moment-js', $this->plugin_url . 'assets/js/moment.min.js', array( 'jquery' ), null, true );  
-        wp_enqueue_script( 'calendar-js', $this->plugin_url . 'assets/js/fullcalendar.min.js', array( 'moment-js' ), null, true );
-        wp_enqueue_script( 'events-frontend', $this->plugin_url . 'assets/js/frontend.js', array ( 'calendar-js' ), null, true );
+        
+        // Load scripts
+        wp_enqueue_script( 'fullcalendar-script', $this->plugin_url . 'assets/js/fullcalendar/main.min.js', array(), null, true );
+        wp_enqueue_script( 'fullcalendar-es', $this->plugin_url . 'assets/js/fullcalendar/es.js', array(), null, true );
+        wp_enqueue_script( 'fullcalendar-ca', $this->plugin_url . 'assets/js/fullcalendar/ca.js', array(), null, true );
+        wp_enqueue_script( 'rsec-frontend', $this->plugin_url . 'assets/js/frontend.js', array ( 'fullcalendar-script' ), null, true );
          
         wp_localize_script( 
-            'events-frontend', 
+            'rsec-frontend', 
             'RSECAjax', 
             array( 
                 'ajaxurl' => admin_url( 'admin-ajax.php' ),
                 'locale' => array(
-                    'monthNames' => array_values( $wp_locale->month ),
-                    'monthAbbrev' => array_values( $wp_locale->month_abbrev ),
-                    'dayNames' => array_values( $wp_locale->weekday ),
-                    'dayAbbrev' => array_values( $wp_locale->weekday_abbrev ),
+                    'lang'  => substr( get_locale(), 0, 2 ),
                     'today' => __( 'today', 'rsec' ),
-                    'day' => __( 'day', 'rsec' ),
-                    'week' => __( 'week', 'rsec' ),
+                    'day'   => __( 'day', 'rsec' ),
+                    'week'  => __( 'week', 'rsec' ),
                     'month' => __( 'month', 'rsec' )
                 )    
             )
         );
+
         
     }  
      
