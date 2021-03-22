@@ -8,20 +8,17 @@ Author: Oscar Ciutat
 Author URI: http://oscarciutat.com/code
 */
 
-define( 'RSEC_VERSION', '1.0' );
-
 class RatherSimpleEventCalendar {  
 
     var $plugin_url;  
   
-      /**
+    /**
      * Plugin instance.
      *
      * @since 1.0
      *
      */
     protected static $instance = null;
-
 
     /**
      * Access this plugin’s working instance
@@ -38,7 +35,6 @@ class RatherSimpleEventCalendar {
         return self::$instance;
 
     }
-
     
     /**
      * Used for regular plugin work.
@@ -69,7 +65,6 @@ class RatherSimpleEventCalendar {
         add_shortcode( 'fullcalendar', array( $this, 'shortcode' ) );
     
     }
-
     
     /**
      * Constructor. Intentionally left empty and public.
@@ -78,10 +73,8 @@ class RatherSimpleEventCalendar {
      *
      */
     public function __construct() {}
-
     
-    
-     /**
+    /**
      * Includes required core files used in admin and on the frontend.
      *
      * @since 1.0
@@ -90,7 +83,6 @@ class RatherSimpleEventCalendar {
     protected function includes() {
         require_once( 'include/ical.php' );
     }
-
 
     /**
      * Loads language
@@ -101,7 +93,6 @@ class RatherSimpleEventCalendar {
     function load_language() {
         load_plugin_textdomain( 'rsec', '', plugin_basename( dirname( __FILE__ ) . '/languages/' ) );
     }
-
 
     /* Function: admin_scripts
      *
@@ -119,7 +110,6 @@ class RatherSimpleEventCalendar {
             }
         }
     }  
-     
 
     /* Function: wp_scripts
      *
@@ -152,7 +142,6 @@ class RatherSimpleEventCalendar {
 
         
     }  
-     
 
     /* Function: meta_box
      *
@@ -169,7 +158,6 @@ class RatherSimpleEventCalendar {
              'high'  
         );  
     }  
-     
      
     /* Function: meta_box_content
      *
@@ -253,7 +241,6 @@ class RatherSimpleEventCalendar {
         }
   
     }
-    
      
     /* Function: shortcode
      *
@@ -264,7 +251,6 @@ class RatherSimpleEventCalendar {
         $html = $this->show_calendar( $attr );
         return $html;
     }
-  
 
     /* Function: show_calendar
      *
@@ -348,7 +334,6 @@ class RatherSimpleEventCalendar {
         echo json_encode( $eventsarray );
         exit;
     }
-
 
     /* Function: get_events
      *
