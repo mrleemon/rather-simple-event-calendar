@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Rather Simple Event Calendar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-22 17:33+0100\n"
-"PO-Revision-Date: 2021-03-22 17:34+0100\n"
+"POT-Creation-Date: 2021-03-22 23:37+0100\n"
+"PO-Revision-Date: 2021-03-22 23:37+0100\n"
 "Last-Translator: OCC <oscarciutat@gmail.com>\n"
 "Language-Team: <contact@oscarciutat.com>\n"
 "Language: es_ES\n"
@@ -16,47 +16,31 @@ msgstr ""
 "X-Poedit-WPHeader: rather-simple-event-calendar.php\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: rather-simple-event-calendar.php:149
-msgid "today"
-msgstr "hoy"
-
-#: rather-simple-event-calendar.php:150
-msgid "day"
-msgstr "día"
-
-#: rather-simple-event-calendar.php:151
-msgid "week"
-msgstr "semana"
-
 #: rather-simple-event-calendar.php:152
-msgid "month"
-msgstr "mes"
-
-#: rather-simple-event-calendar.php:169
 msgid "Event Data"
 msgstr "Datos del evento"
 
-#: rather-simple-event-calendar.php:202
+#: rather-simple-event-calendar.php:184
 msgid "Start Date/Time"
 msgstr "Fecha de inicio"
 
-#: rather-simple-event-calendar.php:207
+#: rather-simple-event-calendar.php:189
 msgid "End Date/Time"
 msgstr "Fecha de finalización"
 
-#: rather-simple-event-calendar.php:288
+#: rather-simple-event-calendar.php:268
 msgid "Loading&#8230;"
 msgstr "Cargando&#8230;"
 
-#: rather-simple-event-calendar.php:293
+#: rather-simple-event-calendar.php:273
 msgid "Export to Google Calendar"
 msgstr "Exportar a Google Calendar"
 
-#: rather-simple-event-calendar.php:293
+#: rather-simple-event-calendar.php:273
 msgid "Download iCal file"
 msgstr "Descargar fichero iCalendar"
 
-#: rather-simple-event-calendar.php:433
+#: rather-simple-event-calendar.php:416
 #, php-format
 msgid "%s Calendar"
 msgstr "Agenda de %s"
