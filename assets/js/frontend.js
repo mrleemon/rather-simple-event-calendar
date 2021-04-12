@@ -9,9 +9,9 @@ document.addEventListener( 'DOMContentLoaded', function() {
             editable: false,
             selectable: false,
             headerToolbar: {
-                left: 'dayGridWeek,dayGridDay',
-                center: 'title',
-                right: 'today prev,next'
+                left: ( window.innerWidth >= 768 ) ? 'dayGridWeek,dayGridDay' : 'title',
+                center: ( window.innerWidth >= 768 ) ? 'title' : '',
+                right: ( window.innerWidth >= 768 ) ? 'today prev,next' : 'prev,next'
             },
             views: {
                 dayGrid: {
@@ -23,7 +23,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
                     dayHeaderFormat: { weekday: 'long', day: 'numeric' }
                 }
             },
-            initialView: 'dayGridWeek',
+            initialView: ( window.innerWidth >= 768 ) ? 'dayGridWeek' : 'dayGridDay',
             fixedWeekCount: false,
             firstDay: 1,
             lazyFetching: 'true',
