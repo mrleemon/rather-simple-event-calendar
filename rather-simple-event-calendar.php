@@ -2,6 +2,7 @@
 /*
 Plugin Name: Rather Simple Event Calendar
 Plugin URI: 
+Update URI: false
 Description: A really simple event calendar
 Version: 1.0
 Author: Oscar Ciutat
