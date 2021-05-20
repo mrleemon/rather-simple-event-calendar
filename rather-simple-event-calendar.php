@@ -11,8 +11,6 @@ Author URI: http://oscarciutat.com/code
 
 class RatherSimpleEventCalendar {  
 
-    var $plugin_url;  
-  
     /**
      * Plugin instance.
      *
