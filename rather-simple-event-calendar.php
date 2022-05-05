@@ -417,7 +417,7 @@ class RatherSimpleEventCalendar {
 
         $ics = ical_header( $calendar_name, $calendar_description, $timezone );
         
-        $events = $this->get_events( $query );
+        $events = $this->get_events();
         $eventsarray = array();
 
         // Loop through events
