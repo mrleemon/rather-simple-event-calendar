@@ -45,8 +45,8 @@ class RatherSimpleEventCalendar {
 
 		add_action( 'init', array( $this, 'load_language' ) );
 
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'wp_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
 		add_action( 'add_meta_boxes', array( $this, 'meta_box' ) );
 		add_action( 'save_post', array( $this, 'save_data' ) );
@@ -77,13 +77,15 @@ class RatherSimpleEventCalendar {
 	 * Loads language
 	 */
 	public function load_language() {
-		load_plugin_textdomain( 'rather-simple-event-calendar', '', plugin_basename( dirname( __FILE__ ) . '/languages/' ) );
+		load_plugin_textdomain( 'rather-simple-event-calendar', false, plugin_basename( dirname( __FILE__ ) . '/languages/' ) );
 	}
 
 	/**
 	 * Enqueue admin scripts
+	 *
+	 * @param string $hook  The current admin page.
 	 */
-	public function admin_scripts( $hook ) {
+	public function admin_enqueue_scripts( $hook ) {
 		if ( in_array( $hook, array( 'post.php', 'post-new.php' ), true ) ) {
 			$screen = get_current_screen();
 			if ( is_object( $screen ) && 'post' === $screen->post_type ) {
@@ -98,7 +100,7 @@ class RatherSimpleEventCalendar {
 	/**
 	 * Enqueue scripts
 	 */
-	public function wp_scripts() {
+	public function enqueue_scripts() {
 		global $wp_locale;
 
 		// Load styles.
@@ -176,6 +178,8 @@ class RatherSimpleEventCalendar {
 
 	/**
 	 * Save data
+	 *
+	 * @param integer $post_id  The post ID.
 	 */
 	public function save_data( $post_id ) {
 		// Verify nonce.
@@ -203,12 +207,12 @@ class RatherSimpleEventCalendar {
 		$event_enddate_data   = $_POST['event-enddate-field'];
 
 		if ( ! empty( $event_startdate_data ) && empty( $event_enddate_data ) ) {
-			$event_startdate_data = date( 'Y-m-d', strtotime( $event_startdate_data ) );
+			$event_startdate_data = gmdate( 'Y-m-d', strtotime( $event_startdate_data ) );
 			update_post_meta( $post_id, 'event-startdate', $event_startdate_data, get_post_meta( $post_id, 'event-startdate', true ) );
 			update_post_meta( $post_id, 'event-enddate', $event_startdate_data, get_post_meta( $post_id, 'event-enddate', true ) );
 		} elseif ( ! empty( $event_startdate_data ) && ! empty( $event_enddate_data ) ) {
-			$event_startdate_data = date( 'Y-m-d', strtotime( $event_startdate_data ) );
-			$event_enddate_data   = date( 'Y-m-d', strtotime( $event_enddate_data ) );
+			$event_startdate_data = gmdate( 'Y-m-d', strtotime( $event_startdate_data ) );
+			$event_enddate_data   = gmdate( 'Y-m-d', strtotime( $event_enddate_data ) );
 			update_post_meta( $post_id, 'event-startdate', $event_startdate_data, get_post_meta( $post_id, 'event-startdate', true ) );
 			update_post_meta( $post_id, 'event-enddate', $event_enddate_data, get_post_meta( $post_id, 'event-enddate', true ) );
 		} else {
@@ -220,6 +224,8 @@ class RatherSimpleEventCalendar {
 
 	/**
 	 * Shortcode
+	 *
+	 * @param array $attr  The shortcode attributes.
 	 */
 	public function shortcode( $attr ) {
 		$html = $this->show_calendar( $attr );
@@ -228,6 +234,8 @@ class RatherSimpleEventCalendar {
 
 	/**
 	 * Show calendar
+	 *
+	 * @param array $attr  The shortcode attributes.
 	 */
 	public function show_calendar( $attr ) {
 
@@ -311,6 +319,8 @@ class RatherSimpleEventCalendar {
 
 	/**
 	 * Get events
+	 *
+	 * @param array $args  Arguments to retrieve posts.
 	 */
 	public function get_events( $args = array() ) {
 
@@ -358,6 +368,8 @@ class RatherSimpleEventCalendar {
 
 	/**
 	 * Query vars
+	 *
+	 * @param array $vars  The array of allowed query variable names.
 	 */
 	public function query_vars( $vars ) {
 		array_push( $vars, 'rsec_export' );
