@@ -14,7 +14,7 @@
 /**
  * Core class used to implement the plugin.
  */
-class RatherSimpleEventCalendar {
+class Rather_Simple_Event_Calendar {
 
 	/**
 	 * Plugin instance.
@@ -446,4 +446,4 @@ class RatherSimpleEventCalendar {
 
 }
 
-add_action( 'plugins_loaded', array( RatherSimpleEventCalendar::get_instance(), 'plugin_setup' ) );
+add_action( 'plugins_loaded', array( Rather_Simple_Event_Calendar::get_instance(), 'plugin_setup' ) );
