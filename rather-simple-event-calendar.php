@@ -3,10 +3,12 @@
  * Plugin Name: Rather Simple Event Calendar
  * Plugin URI:
  * Update URI: false
- * Description: A really simple event calendar
  * Version: 1.0
+ * Requires at least: 5.3
+ * Requires PHP: 7.0
  * Author: Oscar Ciutat
  * Author URI: http://oscarciutat.com/code
+ * Description: A really simple event calendar
  *
  * @package rather_simple_event_calendar
  */
