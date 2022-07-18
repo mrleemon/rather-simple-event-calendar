@@ -8,6 +8,7 @@
  * Requires PHP: 7.0
  * Author: Oscar Ciutat
  * Author URI: http://oscarciutat.com/code
+ * Text Domain: rather-simple-event-calendar
  * Description: A really simple event calendar
  *
  * @package rather_simple_event_calendar
