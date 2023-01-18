@@ -19,11 +19,11 @@ function utf8_next_index( $str, $start ) {
 			$i++;
 		} else {
 			$i++;
-			while ( ( ord( $str[ $i ] ) & 0xc0 ) == 0x80 ) {
+			while ( ( ord( $str[ $i ] ) & 0xc0 ) === 0x80 ) {
 				$i++;
 			}
 		}
-		if ( isset( $str[ $i ] ) && ( ord( $str[ $i ] ) != 0 ) ) {
+		if ( isset( $str[ $i ] ) && ( ord( $str[ $i ] ) !== 0 ) ) {
 			$ret = $i;
 		}
 	}
@@ -49,7 +49,7 @@ function utf8_seq( $str, &$byte_index ) {
 		}
 	} else {
 		$j = 0;
-		for ( $i = $byte_index; isset( $str[ $i ] ) && ( ord( $str[ $i ] ) != 0 ); $i++ ) {
+		for ( $i = $byte_index; isset( $str[ $i ] ) && ( ord( $str[ $i ] ) !== 0 ); $i++ ) {
 			$ret[ $j ] = $str[ $i ];
 			$j++;
 		}
@@ -102,16 +102,16 @@ function ical_fold( $prop, $value ) {
 
 		$char_octets = $byte_index - $prev_byte_index;
 		// If it's a CR then look ahead to the following character, if there is one.
-		if ( ( $char === "\r" ) && isset( $byte_index ) ) {
+		if ( ( "\r" === $char ) && isset( $byte_index ) ) {
 			$this_byte_index = $byte_index;
 			$next_char       = utf8_seq( $str, $byte_index );
 			// If that's a LF then take the CR, and advance by one character.
-			if ( $next_char === "\n" ) {
-				$result     .= $char;    // take the CR
-				$char        = $next_char;  // advance by one character
-				$octets      = 0;         // reset the octet counter to the beginning of the line
-				$char_octets = 0;    // and pretend the LF is zero octets long so that after
-									// we've added it in we're still at the beginning of the line
+			if ( "\n" === $next_char ) {
+				$result     .= $char;    // Take the CR.
+				$char        = $next_char;  // Advance by one character.
+				$octets      = 0;         // Reset the octet counter to the beginning of the line.
+				$char_octets = 0;    // And pretend the LF is zero octets long so that after
+									// we've added it in we're still at the beginning of the line.
 			} else {
 				$byte_index = $this_byte_index;
 			}
@@ -121,8 +121,8 @@ function ical_fold( $prop, $value ) {
 		// (the folding involves adding a CRLF followed by one character, a space or a tab)
 		//
 		// [Note:  It's not entirely clear from the RFC whether the octet that is introduced
-		// when folding counts towards the 75 octets.   Some implementations (eg Google
-		// Calendar as of Jan 2011) do not count it.   However it can do no harm to err on
+		// when folding counts towards the 75 octets. Some implementations (eg Google
+		// Calendar as of Jan 2011) do not count it. However it can do no harm to err on
 		// the safe side and include the initial whitespace in the count.]
 		elseif ( ( $octets + $char_octets ) > $octets_max ) {
 			$result .= $line_split;
