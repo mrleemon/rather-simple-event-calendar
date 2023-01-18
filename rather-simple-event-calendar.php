@@ -183,12 +183,12 @@ class Rather_Simple_Event_Calendar {
 		}
 
 		echo '<th scope="row"><label for="event-startdate-field">' . __( 'Start Date/Time', 'rather-simple-event-calendar' ) . '</label></th>';
-		echo '<td><input class="regular-text" type="date" id="event-startdate-field" name="event-startdate-field" value="' . esc_attr( $event_startdate_field ) . '" /></td>';
+		echo '<td><input type="date" id="event-startdate-field" name="event-startdate-field" value="' . esc_attr( $event_startdate_field ) . '" /></td>';
 
 		echo '</tr><tr>';
 
 		echo '<th scope="row"><label for="event-enddate-field">' . __( 'End Date/Time', 'rather-simple-event-calendar' ) . '</label></th>';
-		echo '<td><input class="regular-text" type="date" id="event-enddate-field" name="event-enddate-field" value="' . esc_attr( $event_enddate_field ) . '" /></td>';
+		echo '<td><input type="date" id="event-enddate-field" name="event-enddate-field" value="' . esc_attr( $event_enddate_field ) . '" /></td>';
 
 		echo '</tr>
 			</table>';
