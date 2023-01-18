@@ -48,7 +48,6 @@ class Rather_Simple_Event_Calendar {
 
 		add_action( 'init', array( $this, 'load_language' ) );
 
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
 		add_action( 'add_meta_boxes', array( $this, 'meta_box' ) );
@@ -81,39 +80,6 @@ class Rather_Simple_Event_Calendar {
 	 */
 	public function load_language() {
 		load_plugin_textdomain( 'rather-simple-event-calendar', false, plugin_basename( dirname( __FILE__ ) . '/languages/' ) );
-	}
-
-	/**
-	 * Enqueue admin scripts
-	 *
-	 * @param string $hook  The current admin page.
-	 */
-	public function admin_enqueue_scripts( $hook ) {
-		if ( in_array( $hook, array( 'post.php', 'post-new.php' ), true ) ) {
-			$screen = get_current_screen();
-			if ( is_object( $screen ) && 'post' === $screen->post_type ) {
-				wp_enqueue_style(
-					'jqueryui-css',
-					plugin_dir_url( __FILE__ ) . 'assets/css/jquery-ui.min.css',
-					array(),
-					filemtime( plugin_dir_path( __FILE__ ) . '/assets/css/jquery-ui.min.css' )
-				);
-				wp_enqueue_style(
-					'datepicker-css',
-					plugin_dir_url( __FILE__ ) . 'assets/css/datepicker.css',
-					array( 'jqueryui-css' ),
-					filemtime( plugin_dir_path( __FILE__ ) . '/assets/css/datepicker.css' )
-				);
-				wp_enqueue_script( 'jquery-ui-datepicker' );
-				wp_enqueue_script(
-					'events-backend',
-					plugin_dir_url( __FILE__ ) . 'assets/js/backend.js',
-					array( 'jquery-ui-datepicker' ),
-					filemtime( plugin_dir_path( __FILE__ ) . '/assets/js/backend.js' ),
-					true
-				);
-			}
-		}
 	}
 
 	/**
@@ -208,24 +174,24 @@ class Rather_Simple_Event_Calendar {
 
 		$event_startdate_field = get_post_meta( $post->ID, 'event-startdate', true );
 		if ( ! empty( $event_startdate_field ) ) {
-			$event_startdate_field = gmdate( 'd-m-Y', strtotime( $event_startdate_field ) );
+			$event_startdate_field = gmdate( 'Y-m-d', strtotime( $event_startdate_field ) );
 		}
 
 		$event_enddate_field = get_post_meta( $post->ID, 'event-enddate', true );
 		if ( ! empty( $event_enddate_field ) ) {
-			$event_enddate_field = gmdate( 'd-m-Y', strtotime( $event_enddate_field ) );
+			$event_enddate_field = gmdate( 'Y-m-d', strtotime( $event_enddate_field ) );
 		}
 
 		echo '<th scope="row"><label for="event-startdate-field">' . __( 'Start Date/Time', 'rather-simple-event-calendar' ) . '</label></th>';
-		echo '<td><input class="regular-text" type="text" id="event-startdate-field" name="event-startdate-field" value="' . esc_attr( $event_startdate_field ) . '" maxlength="10" /></td>';
+		echo '<td><input class="regular-text" type="date" id="event-startdate-field" name="event-startdate-field" value="' . esc_attr( $event_startdate_field ) . '" /></td>';
 
 		echo '</tr><tr>';
 
 		echo '<th scope="row"><label for="event-enddate-field">' . __( 'End Date/Time', 'rather-simple-event-calendar' ) . '</label></th>';
-		echo '<td><input class="regular-text" type="text" id="event-enddate-field" name="event-enddate-field" value="' . esc_attr( $event_enddate_field ) . '" maxlength="10" /></td>';
+		echo '<td><input class="regular-text" type="date" id="event-enddate-field" name="event-enddate-field" value="' . esc_attr( $event_enddate_field ) . '" /></td>';
 
 		echo '</tr>
-            </table>';
+			</table>';
 
 	}
 
