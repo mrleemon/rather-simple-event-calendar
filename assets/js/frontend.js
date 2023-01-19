@@ -35,12 +35,11 @@
 					var start = FullCalendar.formatDate(info.start.valueOf(), { year: 'numeric', month: '2-digit', day: '2-digit' });
 					var end = FullCalendar.formatDate(info.end.valueOf(), { year: 'numeric', month: '2-digit', day: '2-digit' });
 					var req = new XMLHttpRequest();
-					req.addEventListener('load', function() {
+					req.addEventListener('load', function () {
 						successCallback(JSON.parse(this.response));
 					});
-					req.open('GET', RSECAjax.ajaxurl + '?action=rsec-fullcal' + '&start=' + start + '&end=' + end );
+					req.open('GET', RSECAjax.ajaxurl + '?action=rsec-fullcal' + '&start=' + encodeURIComponent(start) + '&end=' + encodeURIComponent(end));
 					req.send();
-
 				}
 			});
 			calendar.render();
