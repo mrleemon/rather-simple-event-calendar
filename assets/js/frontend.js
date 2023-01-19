@@ -32,17 +32,16 @@
 				eventTextColor: '#fff',
 				defaultAllDay: true,
 				events: function (info, successCallback, failureCallback) {
-					jQuery.ajax({
-						url: RSECAjax.ajaxurl + '?action=rsec-fullcal',
-						dataType: 'JSON',
-						data: {
-							start: FullCalendar.formatDate(info.start.valueOf(), { year: 'numeric', month: '2-digit', day: '2-digit' }),
-							end: FullCalendar.formatDate(info.end.valueOf(), { year: 'numeric', month: '2-digit', day: '2-digit' })
-						},
-						success: function (data) {
-							successCallback(data);
-						}
-					})
+					var start = FullCalendar.formatDate(info.start.valueOf(), { year: 'numeric', month: '2-digit', day: '2-digit' });
+					var end = FullCalendar.formatDate(info.end.valueOf(), { year: 'numeric', month: '2-digit', day: '2-digit' });
+					var req = new XMLHttpRequest();
+					req.responseType = 'json';
+					req.addEventListener('load', function() {
+						successCallback(this.response);
+					});
+					req.open('GET', RSECAjax.ajaxurl + '?action=rsec-fullcal' + '&start=' + start + '&end=' + end );
+					req.send();
+
 				}
 			});
 			calendar.render();
