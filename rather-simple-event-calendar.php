@@ -36,7 +36,6 @@ class Rather_Simple_Event_Calendar {
 		}
 
 		return self::$instance;
-
 	}
 
 	/**
@@ -60,7 +59,6 @@ class Rather_Simple_Event_Calendar {
 		add_action( 'parse_request', array( $this, 'parse_request' ) );
 
 		add_shortcode( 'fullcalendar', array( $this, 'shortcode' ) );
-
 	}
 
 	/**
@@ -79,7 +77,7 @@ class Rather_Simple_Event_Calendar {
 	 * Loads language
 	 */
 	public function load_language() {
-		load_plugin_textdomain( 'rather-simple-event-calendar', false, plugin_basename( dirname( __FILE__ ) . '/languages/' ) );
+		load_plugin_textdomain( 'rather-simple-event-calendar', false, plugin_basename( __DIR__ . '/languages/' ) );
 	}
 
 	/**
@@ -142,7 +140,6 @@ class Rather_Simple_Event_Calendar {
 				),
 			)
 		);
-
 	}
 
 	/**
@@ -192,7 +189,6 @@ class Rather_Simple_Event_Calendar {
 
 		echo '</tr>
 			</table>';
-
 	}
 
 	/**
@@ -202,7 +198,7 @@ class Rather_Simple_Event_Calendar {
 	 */
 	public function save_data( $post_id ) {
 		// Verify nonce.
-		if ( ! isset( $_POST['rsec_events_nonce'] ) || ! wp_verify_nonce( $_POST['rsec_events_nonce'], plugin_basename( __FILE__ ) ) ) {
+		if ( ! isset( $_POST['rsec_events_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['rsec_events_nonce'] ), plugin_basename( __FILE__ ) ) ) {
 			return $post_id;
 		}
 
@@ -216,14 +212,12 @@ class Rather_Simple_Event_Calendar {
 			if ( ! current_user_can( 'edit_page', $post_id ) ) {
 				return $post_id;
 			}
-		} else {
-			if ( ! current_user_can( 'edit_post', $post_id ) ) {
+		} elseif ( ! current_user_can( 'edit_post', $post_id ) ) {
 				return $post_id;
-			}
 		}
 
-		$event_startdate_data = $_POST['event-startdate-field'];
-		$event_enddate_data   = $_POST['event-enddate-field'];
+		$event_startdate_data = wp_unslash( $_POST['event-startdate-field'] );
+		$event_enddate_data   = wp_unslash( $_POST['event-enddate-field'] );
 
 		if ( ! empty( $event_startdate_data ) && empty( $event_enddate_data ) ) {
 			$event_startdate_data = gmdate( 'Y-m-d', strtotime( $event_startdate_data ) );
@@ -238,7 +232,6 @@ class Rather_Simple_Event_Calendar {
 			delete_post_meta( $post_id, 'event-startdate' );
 			delete_post_meta( $post_id, 'event-enddate' );
 		}
-
 	}
 
 	/**
@@ -287,8 +280,8 @@ class Rather_Simple_Event_Calendar {
 		global $post;
 
 		$request = array(
-			'event_start_before' => $_GET['end'],
-			'event_end_after'    => $_GET['start'],
+			'event_start_before' => wp_unslash( $_GET['end'] ),
+			'event_end_after'    => wp_unslash( $_GET['start'] ),
 		);
 		$presets = array();
 
@@ -382,7 +375,6 @@ class Rather_Simple_Event_Calendar {
 		}
 
 		return false;
-
 	}
 
 	/**
@@ -462,7 +454,6 @@ class Rather_Simple_Event_Calendar {
 
 		echo $ics;
 	}
-
 }
 
 add_action( 'plugins_loaded', array( Rather_Simple_Event_Calendar::get_instance(), 'plugin_setup' ) );
