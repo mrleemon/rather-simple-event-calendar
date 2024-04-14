@@ -5,7 +5,7 @@
  * Update URI: false
  * Version: 1.0
  * Requires at least: 5.3
- * Requires PHP: 7.0
+ * Requires PHP: 7.4
  * Author: Oscar Ciutat
  * Author URI: http://oscarciutat.com/code
  * Text Domain: rather-simple-event-calendar
