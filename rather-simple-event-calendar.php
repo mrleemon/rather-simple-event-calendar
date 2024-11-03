@@ -106,28 +106,40 @@ class Rather_Simple_Event_Calendar {
 			plugin_dir_url( __FILE__ ) . 'assets/js/fullcalendar/main.min.js',
 			array(),
 			filemtime( plugin_dir_path( __FILE__ ) . '/assets/js/fullcalendar/main.min.js' ),
-			true
+			array(
+				'in_footer' => true,
+				'strategy'  => 'defer',
+			)
 		);
 		wp_enqueue_script(
 			'fullcalendar-es',
 			plugin_dir_url( __FILE__ ) . 'assets/js/fullcalendar/es.js',
 			array(),
 			filemtime( plugin_dir_path( __FILE__ ) . '/assets/js/fullcalendar/es.js' ),
-			true
+			array(
+				'in_footer' => true,
+				'strategy'  => 'defer',
+			)
 		);
 		wp_enqueue_script(
 			'fullcalendar-ca',
 			plugin_dir_url( __FILE__ ) . 'assets/js/fullcalendar/ca.js',
 			array(),
 			filemtime( plugin_dir_path( __FILE__ ) . '/assets/js/fullcalendar/ca.js' ),
-			true
+			array(
+				'in_footer' => true,
+				'strategy'  => 'defer',
+			)
 		);
 		wp_enqueue_script(
 			'rsec-frontend',
 			plugin_dir_url( __FILE__ ) . 'assets/js/frontend.js',
 			array( 'fullcalendar-script' ),
 			filemtime( plugin_dir_path( __FILE__ ) . '/assets/js/frontend.js' ),
-			true
+			array(
+				'in_footer' => true,
+				'strategy'  => 'defer',
+			)
 		);
 
 		wp_localize_script(
