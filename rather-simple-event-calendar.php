@@ -9,6 +9,7 @@
  * Author: Oscar Ciutat
  * Author URI: http://oscarciutat.com/code
  * Text Domain: rather-simple-event-calendar
+ * Domain Path: /languages
  * Description: A really simple event calendar
  *
  * @package rather_simple_event_calendar
