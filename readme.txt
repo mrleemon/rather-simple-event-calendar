@@ -2,8 +2,8 @@
 
 Contributors: Oscar Ciutat
 Tags: calendar, events
-Requires at least: 3.3
-Tested up to: 3.3
+Requires at least: 6.8
+Tested up to: 6.8
 Stable tag: 1.0
 
 A really simple event calendar

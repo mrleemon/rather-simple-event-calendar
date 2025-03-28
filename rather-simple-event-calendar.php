@@ -4,7 +4,7 @@
  * Plugin URI:
  * Update URI: false
  * Version: 1.0
- * Requires at least: 5.3
+ * Requires at least: 6.8
  * Requires PHP: 7.4
  * Author: Oscar Ciutat
  * Author URI: http://oscarciutat.com/code
@@ -46,8 +46,6 @@ class Rather_Simple_Event_Calendar {
 
 		$this->includes();
 
-		add_action( 'init', array( $this, 'load_language' ) );
-
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
 		add_action( 'add_meta_boxes', array( $this, 'meta_box' ) );
@@ -72,13 +70,6 @@ class Rather_Simple_Event_Calendar {
 	 */
 	protected function includes() {
 		require_once 'include/ical.php';
-	}
-
-	/**
-	 * Loads language
-	 */
-	public function load_language() {
-		load_plugin_textdomain( 'rather-simple-event-calendar', false, plugin_basename( __DIR__ . '/languages/' ) );
 	}
 
 	/**
